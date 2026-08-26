@@ -15,5 +15,11 @@ botao.addEventListener("click", function () {
     const usuarioEcontrado = usuario.find(function (u){
         return u.email === loginDigitado && u.senha === senhaDigitada;
     });
-    
+      const mensagem = document.getElementById("mensagemErro");
+
+  if (usuarioEcontrado) {
+    window.location.href = "principal.html";
+  } else {
+    mensagem.textContent = "E-mail ou senha inválidos";
+  }
 });

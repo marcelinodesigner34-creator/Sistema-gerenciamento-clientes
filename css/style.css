@@ -1,0 +1,22 @@
+:root {
+   --azul-principal: #1E90FF;
+  --cinza-fundo: #f0f0f0;
+  --branco: #ffffff;    
+}
+
+.card-login{
+    background-color: var(--azul-principal);
+    width: 400px;
+    padding: 180px 40px;
+    border-radius: 10px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--cinza-fundo);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}

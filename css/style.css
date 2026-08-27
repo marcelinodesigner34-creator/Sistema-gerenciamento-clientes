@@ -58,3 +58,11 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+
+.obrigatorio{
+    color: red;
+}
+
+.campo-erro {
+    border: 2px solid red;
+}

@@ -4,9 +4,6 @@ const usuario = [
     {id: 1, nome: "Marcos Silva", email: "marcos@gmail.com", senha: "2589", tipo: "cliente"}
 ]
 
-
-
-
 const botao = document.getElementById("btnEntrar");
 
 botao.addEventListener("click", function () {

@@ -7,8 +7,13 @@
 .card-login{
     background-color: var(--azul-principal);
     width: 400px;
-    padding: 180px 40px;
+    min-height: 480px;
+    padding: 40px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
 }
 
 body {
@@ -19,4 +24,37 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+}
+
+.card-login h1 {
+    text-align: center;
+    color: var(--branco);
+    margin-bottom: 20px;
+}
+
+.card-login label {
+    color: var(--branco);
+    font-size: 14px;
+}
+
+.card-login input {
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.card-login button {
+    width: 140px;
+    align-self: center;
+    padding: 12px;
+    margin-top: 24px;
+    border: 2px solid var(--branco);
+    border-radius: 25px;
+    background-color: transparent;
+    color: var(--branco);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
 }

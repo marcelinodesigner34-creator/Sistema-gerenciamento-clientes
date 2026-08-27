@@ -26,6 +26,13 @@ body {
     min-height: 100vh;
 }
 
+.pagina-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
 .card-login h1 {
     text-align: center;
     color: var(--branco);
@@ -59,10 +66,83 @@ body {
     cursor: pointer;
 }
 
+.card-cadastro {
+    background-color: var(--branco);
+    width: 900px;
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 32px;
+    border-radius: 10px;
+}
+
+.card-cadastro form {
+    display: grid;
+   grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.botao {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 12px;
+}
+
+.card-cadastro label {
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+.card-cadastro input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.card-cadastro button {
+    padding: 12px;
+    margin-top: 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#btnSalvar {
+    background-color: var(--azul-principal);
+    color: var(--branco);
+}
+
+#btnCancelar {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+#mensagem {
+    color: red;
+    font-size: 14px;
+}
+
 .obrigatorio{
     color: red;
 }
 
 .campo-erro {
     border: 2px solid red;
+}
+
+@media (max-width: 600px) {
+    .card-cadastro form {
+        grid-template-columns: 1fr;
+    }
+    .card-cadastro {
+        margin: 20px;
+    }
 }

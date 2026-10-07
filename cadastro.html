@@ -9,6 +9,18 @@
 </head>
 
 <body>
+    <header class="topo">
+        <nav class="menu">
+            <a href="principal.html">Lista</a>
+            <a href="cadastro.html" class="ativo">Cadastrar</a>
+            <a href="usuarios.html" id="menuUsuarios">Usuários</a>
+        </nav>
+
+        <div class="busca">
+            <input type="text" id="campoBusca" placeholder="Digite nome ou CPF">
+            <button id="btnPesquisar">Pesquisar</button>
+        </div>
+    </header>
     <div class="card-cadastro">
         <h1>Cadastro de Clientes</h1>
 
@@ -34,7 +46,7 @@
             </div>
             
             <div class="campo">
-            <label for="endereco">Endereco:</label>
+            <label for="endereco">Endereço:</label>
             <input type="text" id="endereco">
             </div>
 

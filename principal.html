@@ -7,7 +7,36 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Tela Principal</h1>
-<a href="cadastro.html">Cadastrar Cliente</a>
+<header class="topo">
+        <nav class="menu">
+            <a href="principal.html" class="ativo">Lista</a>
+            <a href="cadastro.html">Cadastrar</a>
+            <a href="usuarios.html" id="menuUsuarios">Usuários</a>
+        </nav>
+
+        <div class="busca">
+            <input type="text" id="campoBusca" placeholder="Digite nome ou CPF">
+            <button id="btnPesquisar">Pesquisar</button>
+        </div>
+    </header>
+
+    <main class="conteudo">
+        <table class="tabela-clientes">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Telefone</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="listaClientes">
+            </tbody>
+        </table>
+
+        <p id="mensagem"></p>
+    </main>
+
+    <script src="js/principal.js"></script>
 </body>
 </html>

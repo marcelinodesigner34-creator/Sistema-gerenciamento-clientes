@@ -1,4 +1,5 @@
 :root {
+    --azul-escuro: #2c3e8f;
    --azul-principal: #1E90FF;
   --cinza-fundo: #f0f0f0;
   --branco: #ffffff;    
@@ -20,10 +21,6 @@ body {
     font-family: Arial, sans-serif;
     background-color: var(--cinza-fundo);
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
 }
 
 .pagina-login {
@@ -87,7 +84,7 @@ body {
     gap: 4px;
 }
 
-.botao {
+.botoes {
     grid-column: 1 / -1;
     display: flex;
     gap: 12px;
@@ -145,4 +142,78 @@ body {
     .card-cadastro {
         margin: 20px;
     }
+}
+
+/* ===== Tela principal ===== */
+
+.topo {
+    background-color: var(--azul-principal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+}
+
+.menu {
+    display: flex;
+    gap: 24px;
+}
+
+.menu a {
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.busca {
+    display: flex;
+    gap: 8px;
+}
+
+.busca input {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    width: 220px;
+}
+
+.busca button {
+    padding: 8px 16px;
+    border: 2px solid var(--branco);
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--branco);
+    cursor: pointer;
+}
+
+.conteudo {
+    padding: 24px;
+}
+
+.tabela-clientes {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--branco);
+}
+
+.tabela-clientes th {
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+    text-align: left;
+    padding: 12px;
+}
+
+.tabela-clientes td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.menu a {
+    padding: 8px 14px;
+    border-radius: 5px;
+}
+
+.menu a.ativo{
+    background-color: var(--branco);
+    color: var(--azul-principal);
 }

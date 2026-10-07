@@ -1,22 +1,29 @@
-const usuario = [
-    {id: 1, nome: "Maria Souza", email: "maria@gmail.com", senha: "1234", tipo: "administrador"},
-    {id: 2, nome: "João Lima", email: "joao@gmail.com", senha: "5678", tipo: "atendente"}, 
-    {id: 3, nome: "Marcos Silva", email: "marcos@gmail.com", senha: "2589", tipo: "cliente"}
-]
-
+const API_URL = "http://localhost:3000";
 const botao = document.getElementById("btnEntrar");
+const mensagem = document.getElementById("mensagemErro");
 
-botao.addEventListener("click", function () {
-    const loginDigitado = document.getElementById("login").value;
-    const senhaDigitada = document.getElementById("senha").value;
-    const usuarioEcontrado = usuario.find(function (u){
-        return u.email === loginDigitado && u.senha === senhaDigitada;
+botao.addEventListener("click", async () => {
+  const email = document.getElementById("login").value;
+  const senha = document.getElementById("senha").value;
+
+  try {
+    const resposta = await fetch(`${API_URL}/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, senha })
     });
-      const mensagem = document.getElementById("mensagemErro");
 
-  if (usuarioEcontrado) {
+    const dados = await resposta.json();
+
+    if (!resposta.ok) {
+      mensagem.textContent = dados.mensagem;
+      return;
+    }
+
+    localStorage.setItem("usuario", JSON.stringify(dados));
     window.location.href = "principal.html";
-  } else {
-    mensagem.textContent = "E-mail ou senha inválidos";
+  } catch (erro) {
+    console.error(erro);
+    mensagem.textContent = "Não foi possível conectar ao servidor";
   }
 });

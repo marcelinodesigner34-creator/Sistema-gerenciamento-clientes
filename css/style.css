@@ -131,8 +131,9 @@ body {
     color: red;
 }
 
-.campo-erro {
+.card-cadastro input.campo-erro {
     border: 2px solid red;
+    outline-color: red;
 }
 
 @media (max-width: 600px) {

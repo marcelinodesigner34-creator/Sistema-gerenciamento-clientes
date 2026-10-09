@@ -30,7 +30,7 @@ const preencherFormulario = async ()=>{
 
 formulario.addEventListener("submit", async function (evento) {
   evento.preventDefault();
-
+  mensagem.classList.remove("mensagem-sucesso");
   const nome = document.getElementById("nome").value;
   const cpf = document.getElementById("cpf").value;
   const email = document.getElementById("email").value;
@@ -85,7 +85,7 @@ formulario.addEventListener("submit", async function (evento) {
         window.location.href = "principal.html";
         return;
     }
-
+    mensagem.classList.add("mensagem-sucesso");
     mensagem.textContent = "Cliente cadastrado com sucesso";
     formulario.reset();
     campoNome.focus();
@@ -93,4 +93,8 @@ formulario.addEventListener("submit", async function (evento) {
     console.error(erro);
     mensagem.textContent = "Não foi possível conectar ao servidor";
   }
+});
+
+document.getElementById("btnCancelar").addEventListener("click", ()=>{
+  window.location.href= "principal.html";
 });

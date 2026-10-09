@@ -238,3 +238,7 @@ body {
     cursor: pointer;
     margin-left: 6px;
 }
+
+.mensagem-sucesso{
+    color: rgb(6, 238, 6) !important;
+}

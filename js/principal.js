@@ -4,6 +4,7 @@ const mensagem = document.getElementById("mensagem");
 
 const mostrarClientes = (clientes) => {
   listaClientes.innerHTML = "";
+  mensagem.classList.remove("menagem-sucesso");
 
   if (clientes.length === 0) {
     mensagem.textContent = "Nenhum cliente encontrado";
@@ -51,6 +52,11 @@ const excluirCliente = async (id) => {
     const dados = await resposta.json();
 
     await carregarClientes();
+    if(resposta.ok){
+      mensagem.classList.add("mensagem-sucesso");
+    } else{
+      mensagem.classList.remove("mensagem-sucesso");
+    }
     mensagem.textContent = dados.mensagem;
   } catch (erro) {
     console.error(erro);

@@ -18,7 +18,8 @@ const mostrarClientes = (clientes) => {
         <td>${cliente.nome}</td>
         <td>${cliente.cpf}</td>
         <td>${cliente.telefone || ""}</td>
-        <td><a href="cadastro.html?id=${cliente.id}" class="btn-editar">Editar</a></td>
+        <td><a href="cadastro.html?id=${cliente.id}" class="btn-editar">Editar</a>
+        <button class="btn-excluir" onclick="excluirCliente(${cliente.id})">Excluir</button></td>
       </tr>
     `;
   });
@@ -32,6 +33,28 @@ const carregarClientes = async () => {
   } catch (erro) {
     console.error(erro);
     mensagem.textContent = "Não foi possível carregar os clientes";
+  }
+};
+
+const excluirCliente = async (id) => {
+  const confirmou = confirm("Tem certeza que deseja excluir este cliente?");
+
+  if (!confirmou) {
+    return;
+  }
+
+  try {
+    const resposta = await fetch(`${API_URL}/clientes/${id}`, {
+      method: "DELETE"
+    });
+
+    const dados = await resposta.json();
+
+    await carregarClientes();
+    mensagem.textContent = dados.mensagem;
+  } catch (erro) {
+    console.error(erro);
+    mensagem.textContent = "Não foi possível excluir o cliente";
   }
 };
 

@@ -15,7 +15,7 @@ const carregarClientes = async ()=>{
         <td>${cliente.nome}</td>
         <td>${cliente.cpf}</td>
         <td>${cliente.telefone || ""}</td>
-        <td></td>
+        <td><a href="cadastro.html?id=${cliente.id}" class="btn-editar">Editar</a></td>
         </tr>
         `;
     });

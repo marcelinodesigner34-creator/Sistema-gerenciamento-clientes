@@ -218,3 +218,12 @@ body {
     background-color: var(--branco);
     color: var(--azul-principal);
 }
+
+.btn-editar {
+    background-color: var(--azul-principal);
+    color: var(--branco);
+    padding: 6px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}

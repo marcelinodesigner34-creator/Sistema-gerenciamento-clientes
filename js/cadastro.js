@@ -98,3 +98,15 @@ formulario.addEventListener("submit", async function (evento) {
 document.getElementById("btnCancelar").addEventListener("click", ()=>{
   window.location.href= "principal.html";
 });
+
+const campoCpfMascara = document.getElementById("cpf");
+
+campoCpfMascara.addEventListener("input", () => {
+  let numeros = campoCpfMascara.value.replace(/\D/g, "").slice(0, 11);
+
+  numeros = numeros.replace(/(\d{3})(\d)/, "$1.$2");
+  numeros = numeros.replace(/(\d{3})(\d)/, "$1.$2");
+  numeros = numeros.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+
+  campoCpfMascara.value = numeros;
+});

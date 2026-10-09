@@ -4,7 +4,7 @@ const mensagem = document.getElementById("mensagem");
 
 const mostrarClientes = (clientes) => {
   listaClientes.innerHTML = "";
-  mensagem.classList.remove("menagem-sucesso");
+  mensagem.classList.remove("mensagem-sucesso");
 
   if (clientes.length === 0) {
     mensagem.textContent = "Nenhum cliente encontrado";

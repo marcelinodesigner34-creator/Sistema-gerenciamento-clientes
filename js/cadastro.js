@@ -3,6 +3,7 @@ const formulario = document.getElementById("formCliente");
 const mensagem = document.getElementById("mensagem");
 const parametros = new URLSearchParams(window.location.search);
 const idCliente = parametros.get("id");
+const usuarioAtual = JSON.parse(localStorage.getItem("usuario"));
 
 const preencherFormulario = async ()=>{
     try{
@@ -70,7 +71,8 @@ formulario.addEventListener("submit", async function (evento) {
         telefone,
         email,
         endereco,
-        data_nascimento: dataNascimento
+        data_nascimento: dataNascimento,
+         usuario_id: usuarioAtual.id
       })
     });
 

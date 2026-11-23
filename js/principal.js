@@ -1,4 +1,3 @@
-const API_URL = "http://localhost:3000";
 const listaClientes = document.getElementById("listaClientes");
 const mensagem = document.getElementById("mensagem");
 
@@ -28,8 +27,7 @@ const mostrarClientes = (clientes) => {
 
 const carregarClientes = async () => {
   try {
-    const resposta = await fetch(`${API_URL}/clientes`);
-    const clientes = await resposta.json();
+   const cliente =await clienteService.listar();
     mostrarClientes(clientes);
   } catch (erro) {
     console.error(erro);
@@ -43,24 +41,19 @@ const excluirCliente = async (id) => {
   if (!confirmou) {
     return;
   }
-
   try {
-    const resposta = await fetch(`${API_URL}/clientes/${id}`, {
-      method: "DELETE"
-    });
-
-    const dados = await resposta.json();
-
+    const dados = await clienteService.excluir(id);
     await carregarClientes();
-    if(resposta.ok){
-      mensagem.classList.add("mensagem-sucesso");
-    } else{
-      mensagem.classList.remove("mensagem-sucesso");
-    }
-    mensagem.textContent = dados.mensagem;
+    mensagem.classList.add("mensagem-sucesso")
+    mensagem.textContent = dados.mensagem
   } catch (erro) {
     console.error(erro);
-    mensagem.textContent = "Não foi possível excluir o cliente";
+    mensagem.classList.remove("mensagem-sucesso")
+    if(erro.response){
+      mensagem.textContent = erro.response.data.mensagem
+    } else{
+      mensagem.textContent = "Não foi possível excluir o cliente";
+    }
   }
 };
 
@@ -76,8 +69,7 @@ btnPesquisar.addEventListener("click", async () => {
   }
 
   try {
-    const resposta = await fetch(`${API_URL}/clientes/buscar?termo=${termo}`);
-    const clientes = await resposta.json();
+    const clientes = await clienteService.buscar(termo);
     mostrarClientes(clientes);
   } catch (erro) {
     console.error(erro);

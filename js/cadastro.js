@@ -1,33 +1,31 @@
-const API_URL = "http://localhost:3000";
 const formulario = document.getElementById("formCliente");
 const mensagem = document.getElementById("mensagem");
 const parametros = new URLSearchParams(window.location.search);
 const idCliente = parametros.get("id");
 const usuarioAtual = JSON.parse(localStorage.getItem("usuario"));
 
-const preencherFormulario = async ()=>{
-    try{
-        const resposta = await fetch(`${API_URL}/clientes/${idCliente}`);
-        const cliente = await resposta.json();
-        if(!resposta.ok){
-            mensagem.textContent = cliente.mensagem;
-            return;
-        }
-        document.getElementById("nome").value = cliente.nome;
-        document.getElementById("cpf").value = cliente.cpf;
-        document.getElementById("telefone").value = cliente.telefone || "";
-        document.getElementById("email").value = cliente.email || "";
-        document.getElementById("endereco").value = cliente.endereco || "";
-        document.getElementById("dataNascimento").value = cliente.data_nascimento || "";
-    } catch (erro){
-        console.error(erro);
-        mensagem.textContent = "Não foi possivel carregar o cliente";
+const preencherFormulario = async () => {
+  try {
+    const cliente = await clienteService.buscarPorId(idCliente)
+    document.getElementById("nome").value = cliente.nome;
+    document.getElementById("cpf").value = cliente.cpf;
+    document.getElementById("telefone").value = cliente.telefone || "";
+    document.getElementById("email").value = cliente.email || "";
+    document.getElementById("endereco").value = cliente.endereco || "";
+    document.getElementById("dataNascimento").value = cliente.data_nascimento || "";
+  } catch (erro) {
+    console.error(erro);
+    if (erro.response) {
+      mensagem.textContent = erro.response.data.mensagem
+    } else {
+      mensagem.textContent = "Não foi possivel carregar o cliente";
     }
+  }
 };
-      if (idCliente){
-        document.querySelector(".card-cadastro h1").textContent = "Editar Cliente";
-        preencherFormulario();
-      }
+if (idCliente) {
+  document.querySelector(".card-cadastro h1").textContent = "Editar Cliente";
+  preencherFormulario();
+}
 
 formulario.addEventListener("submit", async function (evento) {
   evento.preventDefault();
@@ -60,45 +58,39 @@ formulario.addEventListener("submit", async function (evento) {
   }
 
   try {
-    const url = idCliente ? `${API_URL}/clientes/${idCliente}` : `${API_URL}/clientes`;
-    const metodo = idCliente ? "PUT" : "POST";
-    const resposta = await fetch(url,{
-        method: metodo,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        nome,
-        cpf,
-        telefone,
-        email,
-        endereco,
-        data_nascimento: dataNascimento,
-         usuario_id: usuarioAtual.id
-      })
-    });
+    const cliente = {
+      nome,
+      cpf,
+      telefone,
+      email,
+      endereco,
+      data_nascimento: dataNascimento,
+      usuario_id: usuarioAtual.id
+    }
 
-    const dados = await resposta.json();
-
-    if (!resposta.ok) {
-      mensagem.textContent = dados.mensagem;
+    if (idCliente) {
+      await clienteService.editar(idCliente, cliente);
+      window.location.href = "principal.html";
       return;
     }
-
-    if(idCliente){
-        window.location.href = "principal.html";
-        return;
-    }
+    await clienteService.cadastrar(cliente)
     mensagem.classList.add("mensagem-sucesso");
     mensagem.textContent = "Cliente cadastrado com sucesso";
     formulario.reset();
     campoNome.focus();
   } catch (erro) {
     console.error(erro);
-    mensagem.textContent = "Não foi possível conectar ao servidor";
+    if (erro.response) {
+      mensagem.textContent = erro.response.data.mensagem;
+    } else {
+      mensagem.textContent = "Não foi possível conectar ao servidor";
+    }
+
   }
 });
 
-document.getElementById("btnCancelar").addEventListener("click", ()=>{
-  window.location.href= "principal.html";
+document.getElementById("btnCancelar").addEventListener("click", () => {
+  window.location.href = "principal.html";
 });
 
 const campoCpfMascara = document.getElementById("cpf");

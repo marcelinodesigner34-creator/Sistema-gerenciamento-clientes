@@ -85,6 +85,13 @@ formulario.addEventListener("submit", async function (evento) {
     console.error(erro);
     if (erro.response) {
       mensagem.textContent = erro.response.data.mensagem;
+      const campoComErro = erro.response.data.campo;
+
+      if(campoComErro){
+        const input = document.getElementById(campoComErro)
+        input.classList.add("campo-erro");
+        input.focus();
+      }
     } else {
       mensagem.textContent = "Não foi possível conectar ao servidor";
     }

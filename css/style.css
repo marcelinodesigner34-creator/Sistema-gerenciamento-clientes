@@ -131,7 +131,8 @@ body {
     color: red;
 }
 
-.card-cadastro input.campo-erro {
+.card-cadastro input.campo-erro,
+.card-login input.campo-erro {
     border: 2px solid red;
     outline-color: red;
 }
@@ -241,4 +242,9 @@ body {
 
 .mensagem-sucesso{
     color: rgb(6, 238, 6) !important;
+}
+
+button:disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
 }

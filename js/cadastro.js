@@ -3,6 +3,7 @@ const mensagem = document.getElementById("mensagem");
 const parametros = new URLSearchParams(window.location.search);
 const idCliente = parametros.get("id");
 const usuarioAtual = JSON.parse(localStorage.getItem("usuario"));
+const btnSalvar = document.getElementById("btnSalvar")
 
 const preencherFormulario = async () => {
   try {
@@ -57,6 +58,8 @@ formulario.addEventListener("submit", async function (evento) {
     return;
   }
 
+  btnSalvar.disabled = true;
+  btnSalvar.textContent = "Salvando...";
   try {
     const cliente = {
       nome,
@@ -86,7 +89,11 @@ formulario.addEventListener("submit", async function (evento) {
       mensagem.textContent = "Não foi possível conectar ao servidor";
     }
 
+  }finally{
+    btnSalvar.disabled = false;
+    btnSalvar.textContent = "Salvar"
   }
+
 });
 
 document.getElementById("btnCancelar").addEventListener("click", () => {

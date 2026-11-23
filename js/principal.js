@@ -27,7 +27,7 @@ const mostrarClientes = (clientes) => {
 
 const carregarClientes = async () => {
   try {
-   const cliente =await clienteService.listar();
+   const clientes =await clienteService.listar();
     mostrarClientes(clientes);
   } catch (erro) {
     console.error(erro);

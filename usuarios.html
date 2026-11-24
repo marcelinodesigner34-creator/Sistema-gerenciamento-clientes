@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Clientes</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="topo">
+        <nav class="menu">
+            <a href="principal.html">Lista</a>
+            <a href="cadastro.html">Cadastrar</a>
+            <a href="usuarios.html" id="menuUsuarios" class="ativo">Usuários</a>
+            <a href="#" id="btnSair">Sair</a>
+        </nav>
+
+    </header>
+
+    <main class="conteudo">
+        <a href="usuario-cadastro.html" class="btn-editar">Novo usuário</a>
+        <table class="tabela-clientes">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Tipo</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="listaUsuarios">
+            </tbody>
+        </table>
+
+        <p id="mensagem"></p>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/services/api.js"></script>
+    <script src="js/services/usuarioServices.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/usuarios.js"></script>
+</body>
+
+</html>

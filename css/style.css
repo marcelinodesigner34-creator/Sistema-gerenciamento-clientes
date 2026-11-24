@@ -95,7 +95,8 @@ body {
     margin-top: 12px;
 }
 
-.card-cadastro input {
+.card-cadastro input,
+.card-cadastro select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;

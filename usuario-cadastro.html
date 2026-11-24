@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastros de Clientes</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="topo">
+        <nav class="menu">
+            <a href="principal.html">Lista</a>
+            <a href="cadastro.html">Cadastrar</a>
+            <a href="usuarios.html" id="menuUsuarios" class="ativo">Usuários</a>
+            <a href="#" id="btnSair">Sair</a>
+        </nav>
+
+    </header>
+    <div class="card-cadastro">
+        <h1>Cadastrar Usuário</h1>
+
+        <form id="formUsuario">
+            <div class="campo">
+                <label for="nome">Nome: <span class="obrigatorio">*</span></label>
+                <input type="text" id="nome">
+            </div>
+
+            <div class="campo">
+                <label for="email">E-mail<span class="obrigatorio">*</span></label>
+                <input type="email" id="email">
+            </div>
+
+            <div class="campo">
+                <label for="senha">Senha<span class="obrigatorio">*</span></label>
+                <input type="password" id="senha">
+            </div>
+
+            <div class="campo">
+                <label for="tipo">Tipo<span class="obrigatorio">*</span></label>
+               <select id="tipo">
+                <option value="">Selecione</option>
+                <option value="administrador">Administrador</option>
+                <option value="atendente">Atendente</option>
+                </select>
+            </div>
+
+            <div class="botoes">
+                <button type="submit" id="btnSalvar">Salvar</button>
+                <button type="button" id="btnCancelar">Cancelar</button>
+            </div>
+        </form>
+
+        <p id="mensagem"></p>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/services/api.js"></script>
+    <script src="js/services/usuarioServices.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/usuario-cadastro.js"></script>
+</body>
+
+</html>

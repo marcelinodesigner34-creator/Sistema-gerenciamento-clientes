@@ -30,8 +30,10 @@ formulario.addEventListener("submit", async (evento) => {
         if (erro.response) {
             mensagem.textContent = erro.response.data.mensagem;
             const campoComErro = erro.response.data.campo;
-            if (campoComErro) {
-                const input = document.getElementById(campoComErro);
+
+            const input = document.getElementById(campoComErro);
+            if (input) {
+
                 input.classList.add("campo-erro");
                 input.focus();
             }

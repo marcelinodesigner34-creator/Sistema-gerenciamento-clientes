@@ -18,6 +18,12 @@ const preencherFormulario = async () => {
     console.error(erro);
     if (erro.response) {
       mensagem.textContent = erro.response.data.mensagem
+      const campoComErro = erro.response.data.campo;
+      const input = document.getElementById(campoComErro);
+      if(input){
+        input.classList.add("campo-erro");
+        input.focus();
+      }
     } else {
       mensagem.textContent = "Não foi possivel carregar o cliente";
     }

@@ -37,4 +37,27 @@ const carregarUsuarios = async ()=>{
     }
 };
 
+const excluirUsuario = async (id)=>{
+    const confirmou = confirm("Tem certeza que deseja remover esta usuário?");
+    if(!confirmou){
+        return;
+    }
+
+
+try{
+    const dados = await usuarioService.excluir(id, usuarioAtual.id);
+    await carregarUsuarios();
+    mensagem.classList.add("mensagem-sucesso");
+    mensagem.textContent= dados.mensagem;
+} catch (erro){
+    console.error(erro);
+    mensagem.classList.remove("mensagem-sucesso");
+    if(erro.response){
+mensagem.textContent = erro.response.data.mensagem;
+
+    }else{
+          mensagem.textContent = "Não foi possivel remover o usuário";
+    } 
+}
+};
 carregarUsuarios();

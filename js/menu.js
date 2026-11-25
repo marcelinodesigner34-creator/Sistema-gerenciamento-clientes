@@ -14,3 +14,8 @@ btnSair.addEventListener("click", () => {
   localStorage.removeItem("usuario");
   window.location.href = "index.html";
 });
+
+const saudacao = document.createElement("span");
+saudacao.textContent = `Olá, ${usuarioLogado.nome}`;
+saudacao.classList.add("usuario-logado");
+document.querySelector(".topo").appendChild(saudacao);
